@@ -1,0 +1,63 @@
+server:
+  port: 18120
+#db config
+spring:
+  config:
+    activate:
+      on-profile: local
+  redis:
+    port: 49153
+    host: localhost
+  messages:
+    basename: message/cm
+    encoding: UTF-8
+  data:
+    mongodb:
+      #uri: mongodb://192.168.0.101:30001,mongodb://192.168.0.101:30002,mongodb://192.168.0.101:30003
+      #uri: mongodb+srv://admin:asdf1234@cluster0.qjn0e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+      uri: mongodb+srv://them:theMcomp7568@cluster0.5gczj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+      database: "them"
+      timezone: 9
+  security:
+    key-pair: THE_M_COMPANY123
+  jwt:
+    secret: them7568!@34
+    #1000 * 60 * 60 * 24 * 7 일주일
+    tokenValid: 604800000
+    #1000 * 60 * 60 * 24 * 2 일주일
+    refreshTokenValid: 1209600000
+  rabbitmq:
+    host: 15.165.42.241 # rabbitMQ host (docker로 띄웠음)
+    port: 5672 # default port
+    username: rabbitmq # default username
+    password: rabbitmq # default password
+    queue-name: them-order-relay
+    topic-exchange-name: them-order-relay-exchange
+
+
+# 로그설정
+logging:
+  pattern:
+    console: "[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %M %logger{35} - %msg%n"
+  level:
+    root: warn
+    org.springframework.web: debug
+    org.springframework.security: off
+    com.them.: debug
+    java.sql: error
+    jdbc: off
+    jdbc.sqlonly: off
+    jdbc.sqltiming: debug
+    jdbc.audit: off
+    jdbc.resultset: off
+    jdbc.resultsettable: off
+    jdbc.connection: error
+  file:
+    path: /home/office/com-them-order-relay/logs
+    name: ${logging.file.path}/order-relay.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: "${logging.file.path}/orderRelay.log.%d{yyyy-MM-dd}.%i.log.gz"
+      max-size: 4GB
+      max-history: 30

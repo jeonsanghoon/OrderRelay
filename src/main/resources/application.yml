@@ -1,0 +1,47 @@
+spring:
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+  profiles:
+    active: local # 디폴트 환경
+    domain: "api-order.friendzplus.com"
+    checkHost: "10.10.10.209,10.10.11.222"
+  security:
+    key-pair: them7568!!
+  thymeleaf:
+    prefix: "classpath:/static/"
+    check-template-location: true
+    suffix=: "html"
+    mode: "HTML5"
+    cache: "false"
+  mail:
+    host: smtps.hiworks.com #smtp.gmail.com
+    port: 465
+    username: shjeon@themcompany.kr #mrc0700smtp@gmail.com
+    password: jeonsanghoon1 #jshgogoman3
+    properties:
+      mail.debug: true
+      mail.mime.charset: UTF-8
+      mail.transport.protocol: smtp
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      #mail.smtp.ssl.trust: smtps.hiworks.com
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+server:
+  # 세션 4시간 (3600*4)
+  servlet:
+    session:
+      timeout: 14400
+    #업로드 용량
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  #GZip 압축 적용
+  tomcat:
+    :compression: on
+    :compressableMimeTypes: application/json,application/xml,text/html,text/xml,text/plain
+service:
+  toMails: shjeon@themcompany.kr,hmahn@themcompany.kr
+
+
+

@@ -42,6 +42,9 @@ server:
     :compressableMimeTypes: application/json,application/xml,text/html,text/xml,text/plain
 service:
   toMails: shjeon@themcompany.kr,hmahn@themcompany.kr
+  base:
+    storeKey-gubun: "\\."
+    order-gubun: "_"
 
 
 
